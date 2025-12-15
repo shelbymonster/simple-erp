@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees - Simple ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Employee Management</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Primary Navigation -->
+        <nav class="primary-nav">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-divider"></span>
+            <a href="invoices.html" class="nav-link">Invoices</a>
+            <a href="bills.html" class="nav-link">Bills</a>
+            <a href="customers.html" class="nav-link">Customers</a>
+            <a href="vendors.html" class="nav-link">Vendors</a>
+            <a href="inventory.html" class="nav-link">Products</a>
+            <a href="employees.html" class="nav-link active">Employees</a>
+            <a href="payroll.html" class="nav-link">Payroll</a>
+            <a href="reports.html" class="nav-link">Reports</a>
+        </nav>
+
+        <!-- Page Actions -->
+        <nav class="nav-buttons">
+            <a href="#" class="button" onclick="showAddEmployeeForm()">Add New Employee</a>
+        </nav>
+
+        <main>
+            <!-- Add Employee Form -->
+            <div id="add-employee-form" class="add-employee-form">
+                <h3>Add New Employee</h3>
+                <form onsubmit="addEmployee(event)">
+                    <h4>Required Information</h4>
+                    <div class="form-row">
+                        <label>First Name:</label>
+                        <input type="text" id="employeeFirstName" required class="description-input">
+                        
+                        <label>Last Name:</label>
+                        <input type="text" id="employeeLastName" required class="description-input">
+                    </div>
+                    
+                    <div class="form-row">
+                        <label>Pay Type:</label>
+                        <select id="payType" required class="vendor-select" onchange="togglePayFields()">
+                            <option value="">Select pay type...</option>
+                            <option value="hourly">Hourly</option>
+                            <option value="salary">Salary</option>
+                        </select>
+                        
+                        <label id="payRateLabel">Pay Rate:</label>
+                        <input type="number" id="payRate" step="0.01" required class="amount-input" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-row">
+                        <label>Hire Date:</label>
+                        <input type="date" id="hireDate" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label>Email:</label>
+                        <input type="email" id="employeeEmail" class="description-input" placeholder="Optional">
+                    </div>
+                    
+                    <div class="form-row">
+                        <label>Department:</label>
+                        <select id="employeeDepartment" class="vendor-select">
+                            <option value="">Select department (optional)...</option>
+                            <option value="Administration">Administration</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="IT">IT</option>
+                            <option value="Finance">Finance</option>
+                            <option value="HR">Human Resources</option>
+                        </select>
+                        
+                        <label>Position:</label>
+                        <input type="text" id="employeePosition" class="description-input" placeholder="Optional">
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="button">Add Employee</button>
+                        <button type="button" class="button cancel" onclick="hideAddEmployeeForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Employees List -->
+            <div id="employees-list">
+                <h2>Employees List</h2>
+                <div class="filter-buttons">
+                    <button class="button all" onclick="filterEmployees('all')">All</button>
+                    <button class="button button-primary" onclick="filterEmployees('hourly')">Hourly</button>
+                    <button class="button button-purple" onclick="filterEmployees('salary')">Salary</button>
+                </div>
+                
+                <table class="table" id="employees-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Position</th>
+                            <th>Pay Type</th>
+                            <th>Pay Rate</th>
+                            <th>Hire Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employees-tbody">
+                        <!-- Employees will be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Simple ERP System</p>
+        </div>
+    </footer>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/employees.js"></script>
+</body>
+</html>
