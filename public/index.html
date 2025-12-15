@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Simple ERP</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Simple ERP Dashboard</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="dashboard-layout">
+            <!-- Toolbox Sidebar (Left) -->
+            <div class="dashboard-sidebar">
+                <div class="quick-actions-section">
+                    <h2>Toolbox</h2>
+                    <div class="action-buttons">
+                        <a href="views/invoices.html" class="button button-success">
+                            Manage Invoices
+                        </a>
+                        <a href="views/bills.html" class="button button-danger">
+                            Manage Bills
+                        </a>
+                        <a href="views/customers.html" class="button button-primary">
+                            Customers
+                        </a>
+                        <a href="views/vendors.html" class="button button-purple">
+                            Vendors
+                        </a>
+                        <a href="views/inventory.html" class="button button-orange">
+                            Products
+                        </a>
+                        <a href="views/payroll.html" class="button button-teal">
+                            Payroll
+                        </a>
+                        <a href="views/reports.html" class="button button-secondary">
+                            Reports
+                        </a>
+                        <a href="views/settings.html" class="button button-dark">
+                            Settings
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content (Right) -->
+            <div class="dashboard-main-content">
+                <!-- Cash Flow Summary -->
+                <div class="cash-flow-summary">
+                    <h2>Net Cash Flow</h2>
+                    <p class="amount" id="net-cash-flow">$0.00</p>
+                    <p class="dashboard-card-subtitle">Total Revenue - Total Expenses</p>
+                </div>
+
+                <!-- Dashboard Cards -->
+                <div class="dashboard-cards">
+                    <!-- Money In Card -->
+                    <div class="dashboard-card card-money-in">
+                        <h3>Money In</h3>
+                        <div class="amount" id="money-in-amount">$0.00</div>
+                        <div class="details">From paid invoices</div>
+                    </div>
+
+                    <!-- Money Out Card -->
+                    <div class="dashboard-card card-money-out">
+                        <h3>Money Out</h3>
+                        <div class="amount" id="money-out-amount">$0.00</div>
+                        <div class="details">From paid bills</div>
+                    </div>
+
+                    <!-- Unpaid Invoices Card -->
+                    <div class="dashboard-card card-unpaid-invoices">
+                        <h3>Unpaid Invoices</h3>
+                        <div class="amount" id="unpaid-invoices-amount">$0.00</div>
+                        <div class="details">
+                            <span id="unpaid-invoices-count">0</span> invoice(s) pending
+                        </div>
+                    </div>
+
+                    <!-- Unpaid Bills Card -->
+                    <div class="dashboard-card card-unpaid-bills">
+                        <h3>Unpaid Bills</h3>
+                        <div class="amount" id="unpaid-bills-amount">$0.00</div>
+                        <div class="details">
+                            <span id="unpaid-bills-count">0</span> bill(s) pending
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Low Stock Alert Section -->
+                <div id="low-stock-alert" class="low-stock-alert hidden">
+                    <h3>Low Stock Alert</h3>
+                    <p>The following products are running low on stock:</p>
+                    <div id="low-stock-list" class="low-stock-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Simple ERP System</p>
+        </div>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
